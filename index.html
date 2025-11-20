@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonali Kumari — Portfolio</title>
+
+  <style>
+    :root{
+      --bg:#FAF8F5;               
+      --card:#1A1A1A;             
+      --muted:#6A6A6A;            
+      --accent:#00C16A;           
+      --shadow:0 8px 22px rgba(0,0,0,0.22);
+      font-family:"Inter", sans-serif;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{
+      background:var(--bg);
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+    ::-webkit-scrollbar{width:0;height:0;}
+    a{text-decoration:none;color:inherit;}
+    .container{max-width:1100px;margin:auto;padding:26px;}
+
+    /* HEADER */
+    header{position:sticky;top:12px;z-index:50;}
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;
+      background:white;padding:12px 24px;
+      border-radius:16px;border:1px solid #e5e5e5;
+      box-shadow:0 8px 24px rgba(0,0,0,0.08);
+    }
+    .brand{display:flex;align-items:center;gap:12px;}
+    .brand img{
+      width:58px;height:58px;border-radius:12px;object-fit:cover;
+    }
+    nav a{
+      font-weight:600;margin-left:22px;
+      color:#333;transition:0.2s;
+    }
+    nav a:hover{color:var(--accent);}
+
+    /* HERO */
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      gap:40px;
+      margin-top:40px;
+      align-items:flex-start;
+    }
+
+    .hero-left{
+      flex:1;
+      padding-top:10px;
+    }
+
+    .hero-left h2{
+      font-size:36px;margin-bottom:8px;
+      color:#111;font-weight:700;
+    }
+    .hero-left h2 span{color:var(--accent);}
+    .hero-left p{
+      color:var(--muted);line-height:1.6;
+      margin-bottom:18px;font-size:16px;
+    }
+
+    .skills-line{
+      display:flex;gap:10px;flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+    .skills-line span{
+      padding:6px 12px;background:#fff;
+      border-radius:8px;border:1px solid #dcdcdc;
+      font-size:13px;font-weight:500;color:#444;
+    }
+
+    .cta{display:flex;gap:14px;margin-top:6px;}
+
+    .btn{
+      padding:10px 16px;border-radius:12px;
+      background:#eaeaea;border:1px solid #d0d0d0;
+      font-weight:600;transition:0.25s;
+      cursor:pointer;
+    }
+    .btn:hover{background:#d8d8d8;}
+
+    .btn.primary{
+      background:var(--accent);color:#fff;border:none;
+      box-shadow:0 8px 20px rgba(0,193,106,0.35);
+    }
+    .btn.primary:hover{background:#00d47a;}
+
+    .hero-right{width:350px;}
+
+    /* FIXED FULL IMAGE (NO CROPPING) */
+    .hero-photo {
+      width:100%;
+      overflow:hidden;
+      background:white;
+      border-radius:14px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.25);
+      padding:8px;
+    }
+    .hero-photo img{
+      width:100%;
+      height:auto;
+      object-fit:contain;     /* FULL image visible */
+      border-radius:10px;
+      display:block;
+    }
+
+    /* QUICK INFO CARD */
+    .profile-card{
+      background:var(--card);
+      color:#fff;padding:18px;
+      border-radius:14px;box-shadow:var(--shadow);
+      margin-top:16px;
+    }
+    .profile-card h3{
+      margin-bottom:6px;font-size:20px;color:#fff;
+    }
+    .profile-card p{
+      font-size:14px;color:#dcdcdc;margin-bottom:6px;
+    }
+
+    /* SECTIONS */
+    section{margin-top:70px;}
+    section h2{font-size:28px;color:#111;margin-bottom:14px;}
+
+    /* ABOUT */
+    .about-card{
+      background:#fff;padding:28px;border-radius:14px;
+      border:1px solid #eee;box-shadow:0 8px 22px rgba(0,0,0,0.10);
+      max-width:900px;
+    }
+    .about-card p{
+      line-height:1.75;color:#444;margin-bottom:12px;
+    }
+
+    .highlights{
+      display:grid;gap:18px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      margin-top:20px;
+    }
+
+    .box{
+      background:var(--card);padding:18px;
+      border-radius:12px;color:#fff;
+      transition:0.2s;
+      box-shadow:0 10px 28px rgba(0,0,0,0.3);
+    }
+    .box:hover{transform:translateY(-4px);}
+    .box h3{
+      color:var(--accent);
+      margin-bottom:8px;font-size:18px;
+    }
+
+    /* PROJECTS */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:#fff;padding:16px;border-radius:14px;
+      border:1px solid #ddd;transition:0.25s;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    /* PROJECT IMAGES FIXED (NO CROPPING) */
+    .project-img{
+      width:100%;
+      height:auto;
+      object-fit:contain;     /* full clean image */
+      border-radius:10px;
+      margin-bottom:10px;
+      background:white;
+      padding:6px;
+    }
+
+    .tag{
+      padding:6px 10px;background:#f3f3f3;border-radius:999px;
+      border:1px solid #ddd;font-size:13px;color:#444;margin-right:6px;
+    }
+
+    /* CONTACT */
+    .contact-form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .contact-form input,
+    .contact-form textarea{
+      padding:12px;border-radius:10px;
+      border:1px solid #ccc;background:#fafafa;
+      font-size:14px;color:#333;
+    }
+    .contact-form textarea{grid-column:1/-1;min-height:120px;}
+
+    footer{
+      text-align:center;color:#555;
+      padding:20px;margin-top:40px;
+    }
+
+    @media(max-width:900px){
+      .hero{flex-direction:column;}
+      .hero-right{width:100%;}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <img src="logo.jpg">
+        <div>
+          <h1 style="font-size:20px;color:#111">Sonali Kumari</h1>
+          <div style="color:#555;font-size:13px">Python Developer • Web Developer</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="Sonali_Resume.pdf">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-left">
+      <h2>Hi — I'm <span>Sonali Kumari</span></h2>
+      <p>
+        A Python & Web Developer focused on building modern, clean and user-friendly digital experiences.
+        I enjoy writing structured, efficient code and building interfaces that feel intuitive and consistent.
+        With strong interest in backend logic, UI refinement, and real-world problem solving, I work on
+        projects that balance functionality and a clean technical approach.
+      </p>
+
+      <div class="skills-line">
+        <span>Python</span>
+        <span>Web Development</span>
+        <span>DBMS</span>
+        <span>React Basics</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="#projects">See Projects</a>
+        <a class="btn" href="#contact">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo">
+        <img src="logo.jpg">
+      </div>
+
+      <div class="profile-card">
+        <h3>Quick Info</h3>
+        <p>📍 Chandigarh — Open for freelance</p>
+        <p>I build UI layouts, responsive websites & Python applications.</p>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <a class="btn" href="Sonali_Resume.pdf">Resume</a>
+          <a class="btn" href="https://github.com/astutesona">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+
+    <div class="about-card">
+      <p>I am <strong>Sonali Kumari</strong>, an MCA student specializing in modern software development, Python programming and database systems.</p>
+      <p>I work with <strong>Python, JavaScript, HTML, CSS, React, MySQL, Git, Linux</strong>, and build clean, maintainable and user-focused applications.</p>
+      <p>I explore <strong>AI tools, automation workflows and UI/UX improvements</strong> to increase productivity and quality.</p>
+      <p>I aim to contribute to impactful real-world projects and grow as a professional developer.</p>
+    </div>
+
+    <div class="highlights">
+      <div class="box">
+        <h3>Technical Skills</h3>
+        <p>Python, JS, HTML, CSS, React, MySQL, Git, Linux</p>
+      </div>
+
+      <div class="box">
+        <h3>Strengths</h3>
+        <p>Clean coding, analytical thinking, UI understanding, discipline</p>
+      </div>
+
+      <div class="box">
+        <h3>Interests</h3>
+        <p>AI Tools, Automation, UI/UX Design</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="cards">
+
+      <!-- Project 1 -->
+      <div class="card">
+        <a href="https://github.com/astutesona/CodeAlpha_MYPORTFOLIO" target="_blank"> <!-- add GitHub link here -->
+          <img class="project-img" src="portfolio.png">
+        </a>
+        <h3>Portfolio Website</h3>
+        <p style="color:#666">A clean personal portfolio with modern UI & animations.</p>
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">React</span>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card">
+        <a href="https://github.com/astutesona/agriLearnHub-A_smart_farming_platform" target="_blank"> <!-- add GitHub link here -->
+          <img class="project-img" src="farming.png">
+        </a>
+        <h3>AgriLearn Hub</h3>
+        <p style="color:#666">A smart farming learning & marketplace platform — designed to support farmers from learning to selling, all on a single platform.</p>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card">
+        <a href="https://github.com/astutesona/STUDENT_PERFORMANCE_ANALYZER_" target="_blank"> <!-- add GitHub link here -->
+          <img class="project-img" src="student.png">
+        </a>
+        <h3>Student Performance Analyzer</h3>
+        <p style="color:#666">Dashboard to track student scores, attendance and subject-wise trends.</p>
+        <span class="tag">Python</span><span class="tag">DBMS</span><span class="tag">MYSQL</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+
+    <div class="cards">
+
+      <form class="card contact-form" onsubmit="submitToSheet(event)">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button class="btn primary" type="submit" style="width:max-content">Send Message</button>
+      </form>
+
+      <div class="card" style="padding:18px">
+        <h3>Social</h3>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <a class="btn" href="https://www.linkedin.com/in/astutesona/">LinkedIn</a>
+          <a class="btn" href="https://github.com/astutesona">GitHub</a>
+          <a class="btn" href="https://gitlab.com/">GitLab</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>© 2025 — Sonali Kumari</footer>
+
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbx7IRB340GYX3ojwsKgkfHTOgVDmixsdEpTvEGFAIjmKrEhNT7JRMgegKn3YTMTedk16w/exec";
+
+async function submitToSheet(e){
+  e.preventDefault();
+
+  const form = e.target;
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  await fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+
+  alert("Thank you! Your message has been sent.");
+  form.reset();
+}
+</script>
+
+</body>
+</html>
